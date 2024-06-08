@@ -1,0 +1,42 @@
+{
+    "bodyStructure": {
+        "name": {
+            "type": "string",
+            "isRequired": true,
+            "equals": null
+        },
+        "age": {
+            "type": "number",
+            "isRequired": false
+        },
+        "email": {
+            "type": "string",
+            "isRequired": true,
+            "equals": "example@example.com"
+        },
+        "data": {
+            "project": {
+                "type": "string",
+                "isRequired": true,
+                "equals": null
+            },
+            "role": {
+                "type": "string",
+                "isRequired": false,
+                "equals": "admin"
+            },
+            "metadata": {
+                "isActive": {
+                    "type": "boolean",
+                    "isRequired": true,
+                    "equals": null
+                },
+                "registeredOn": {
+                    "type": "string",
+                    "isRequired": false,
+                    "equals": "2021-01-01"
+                }
+            }
+        }
+    }
+}

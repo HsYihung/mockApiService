@@ -1,0 +1,8 @@
+{
+    "endpoints": [
+        {
+            "method": "post",
+            "path": "/api/users"
+        }
+    ]
+}
