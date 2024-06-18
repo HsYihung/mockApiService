@@ -3,6 +3,14 @@
         {
             "method": "post",
             "path": "/api/users"
+        },
+        {
+            "method": "post",
+            "path": "/getEsgInfo"
+        },
+        {
+            "method": "post",
+            "path": "/getFitBackInfo"
         }
     ]
 }

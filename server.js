@@ -1,9 +1,12 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
+const cors = require('cors');
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 function loadEndpoints() {
     const configPath = './config/endpoint.json';
@@ -77,6 +80,21 @@ function validateBody(body, structure) {
 loadEndpoints();
 
 const PORT = process.env.PORT || 3000;
+const HTTPS_PORT = process.env.HTTPS_PORT || 3443;
+
+try{
+    const options = {
+        key: fs.readFileSync(path.join(__dirname, 'certs', 'server.key')),
+        cert: fs.readFileSync(path.join(__dirname, 'certs', 'server.crt'))
+      };
+    
+    https.createServer(options, app).listen(HTTPS_PORT, () => {
+        console.log(`HTTPS Server is running on port ${HTTPS_PORT}`);
+    });
+}catch (err) {
+  console.warn('Could not find SSL certificates, falling back to HTTP:', err.message);
+}
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
